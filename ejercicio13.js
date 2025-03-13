@@ -1,26 +1,35 @@
-let cargofijo=0;
-let valorminutos=0;
-let paquetededatos=0;
-let operador="tigo"
-let minutosinternacionales;
-if(operador==tigo){
-    cargofijo=45000;
-    valorminutos=200;
-    paquetededatos=12000
-}else if(operador==claro){
-    cargofijo=30000;
-    valorminutos=100;
-    paquetededatos=18000;
-}else{
-    cargofijo=40000;
-    valorminutos=250;
-    paquetededatos=8000;
+function calcularCostoTotal(operador, minutosInternacionales) {
+    let cargoFijo, valorMinutoInternacional, valorPaqueteDatos;
+    switch (operador.toLowerCase()) {
+        case 'tigo':
+          cargoFijo = 45000;
+          valorMinutoInternacional = 200;
+          valorPaqueteDatos = 12000;
+          break;
+        case 'claro':
+          cargoFijo = 30000;
+          valorMinutoInternacional = 100;
+          valorPaqueteDatos = 18000;
+          break;
+        case 'movistar':
+          cargoFijo = 40000;
+          valorMinutoInternacional = 250;
+          valorPaqueteDatos = 8000;
+          break;
+        default:
+          return "Operador no válido. Por favor, elija entre Tigo, Claro o Movistar.";
+      }
+      let costoMinutosInternacionales = minutosInternacionales * valorMinutoInternacional;
+      let costoTotal = cargoFijo + costoMinutosInternacionales;
+      return `El costo total es $${costoTotal} (Cargo fijo: $${cargoFijo}, Minutos internacionales: $${costoMinutosInternacionales})`;
 }
-let costominutointernacional=(minutosinternacionales*valorminuto)
-let costototal=(cargofijo+costominutointernacional+valorpaquetedatos)
-
-console.log(`Operador: ${operador}`)
-console.log(`Cargo fijo: $${cargoFijo}`)
-console.log(`Costo llamadas internacionales: $${costominutosinternacionales}`)
-console.log(`Valor paquete de datos: $${valorPaqueteDatos}`)
-console.log(`Total a pagar: $${costototal}`)
+function obtenerDatosYCalcular() {
+    let operador = prompt("Ingrese su operador: Tigo, Claro o Movistar").toLowerCase();
+    let minutosInternacionales = parseInt(prompt("Ingrese la cantidad de minutos internacionales consumidos:"));
+    if (isNaN(minutosInternacionales) || minutosInternacionales < 0) {
+        alert("Por favor, ingrese una cantidad válida de minutos internacionales.");
+        return;
+      }
+      let resultado = calcularCostoTotal(operador, minutosInternacionales);
+  alert(resultado);
+}

@@ -1,39 +1,38 @@
-let tamaño="pequeño"
-let precio;
-let adicional="tocineta"
-if(sandwich==pequeño){
-    precio=6000
-    adicional=3000
-    let=(precio+adicional)
-}if(sandwich==pequeño){
-    precio=6000
-    adicional=3000
-    let=(precio+adicional)
-}if(sandwich==pequeño){
-    precio=6000
-    adicional=2500
-    let=(precio+adicional)
-}if(sandwich==pequeño){
-    precio=6000
-    adicional=0
-    let=(precio+adicional)
-}if(sandwich==grande){
-    precio=12000
-    adicional=3000
-    let=(precio+adicional)
-}if(sandwich==grande){
-    precio=12000
-    adicional=3000
-    let=(precio+adicional)
-}if(sandwich==grande){
-    precio=12000
-    adicional=2500
-    let=(precio+adicional)
-}if(sandwich==grande){
-    precio=12000
-    adicional=0
-    let=(precio+adicional)
-}else{
-    console.log("no no lo tenemos disponible ")
-}
-console.log(`el precio sandwich es ${precio} con adicional es ${adicional}`)
+function calcularPrecioSandwich(tamaño, ingredientes) {
+    let precioBase = 0;
+
+    if (tamaño === 'pequeño') {
+      precioBase = 6000;
+    } else if (tamaño === 'grande') {
+      precioBase = 12000;
+    } else {
+      return "Tamaño no válido. Elija entre 'pequeño' o 'grande'.";
+    }
+
+    const preciosIngredientes = {
+      tocineta: 3000,
+      jalapeño: 0,
+      pavo: 3000,
+      queso: 2500
+    };
+
+    let precioTotal = precioBase;
+    for (let ingrediente of ingredientes) {
+      if (preciosIngredientes[ingrediente]) {
+        precioTotal += preciosIngredientes[ingrediente];
+      }
+    }
+  
+
+    return `El precio total de su sándwich es $${precioTotal}.`;
+  }
+
+  function realizarPedido() {
+    let tamaño = prompt("¿Qué tamaño de sándwich desea? (pequeño o grande)").toLowerCase();
+    let ingredientesInput = prompt("¿Qué ingredientes adicionales desea? (tocineta, jalapeño, pavo, queso). Separados por coma").toLowerCase();
+    let ingredientes = ingredientesInput.split(",").map(ingrediente => ingrediente.trim());
+    let resultado = calcularPrecioSandwich(tamaño, ingredientes);
+    alert(resultado);
+  }
+  
+  realizarPedido();

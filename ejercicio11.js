@@ -1,10 +1,20 @@
-let dannosdecomputadora="pitido pero la unidad gira"
-if(dannosdecomputadora==pitidosperolaunidadgira){
-    console.log(`pongase en contacto con el técnico apoyo `)
-}if (dannosdecomputadora==pitidosperolaunidadnogira){
-    console.log(`verificar contactos de la unidad`)
-}else if (dannosdecomputadora==noemitepitidosdiscoduronogira){
-    console.log(`traiga lacomputadora para repararla en la central`)
-}else{
-    console.log(`compruebe la conexion con los altavoces`)
+function diagnosticarComputadora(pitido, discoDuro) {
+    if (pitido && discoDuro) {
+        return "La computadora está averiada.";
+    } else if (pitido && !discoDuro) {
+        return "Verificar contactos de la unidad.";
+    } else if (!pitido && !discoDuro) {
+        return "Traiga la computadora para repararla en la central.";
+    } else if (!pitido && discoDuro) {
+        return "Compruebe las conexiones de altavoces.";
+    }
 }
+function obtenerDatosYDiagnosticar() {
+    let pitido = prompt("¿La computadora emite un pitido al iniciarse? (si/no)").toLowerCase();
+    let discoDuro = prompt("¿El disco duro gira? (si/no)").toLowerCase();
+    pitido = pitido === "si";
+    discoDuro = discoDuro === "si";
+    let resultado = diagnosticarComputadora(pitido, discoDuro);
+    alert(resultado);
+}
+obtenerDatosYDiagnosticar();

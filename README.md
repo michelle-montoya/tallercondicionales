@@ -1,2 +1,1 @@
-# tallercondicionales
-hola son 14 ejercicios, soy Michelle Fernanda Montoya 
+soy Michelle Fernanda Montoya 
